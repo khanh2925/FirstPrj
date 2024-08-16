@@ -1,6 +1,6 @@
 public class Welcome {
     public static void main(String[] args) {
-        System.out.println("Hello Pham Quoc Khanh");
-        System.out.println("Hello KTPM19A, love you");
+        System.out.println("Hello Chu Anh Khoi");
+        System.out.println("Hello KTPM19A");
     }
 }

@@ -1,0 +1,39 @@
+1)  
+private Driver driver;
+    private String dbName;
+
+    public Neo4jConnManager(String url, String useName, String password, String dbName) {
+        this.driver = GraphDatabase.driver(url, AuthTokens.basic(useName, password));
+        this.dbName = dbName;
+    }
+    public Session geSession(){
+        return driver.session(SessionConfig.forDatabase(dbName));
+    }
+
+    @Override
+    public void close() throws Exception {
+        driver.close();
+    }
+
+
+2)
+
+    public static  ObjectMapper mapper = JsonMapper.builder().findAndAddModules().build();
+    public static <T>T toEntity(Map<String,Object>map, Class<T> clazz){
+        return mapper.convertValue(map,clazz);
+    }
+    public static Map<String,Object> toMap(Object object){
+        return mapper.convertValue(object,Map.class);
+    }
+    public static <T>T toDTO(Object object, Class<T> classDTO){
+        return mapper.convertValue(object,classDTO);
+    }
+    public static <T>T fromDTOtoEntity(Object objectDTO, Class<T> clazz){
+        return mapper.convertValue(objectDTO,clazz);
+
+3)
+String url = "neo4j://localhost:7687";
+        String user= "neo4j";
+        String password = "12345678";
+        String dbName ="khanh23641111";
+        Neo4jConnManager cocc = new Neo4jConnManager(url,user,password,dbName);
